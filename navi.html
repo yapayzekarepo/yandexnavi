@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yandex Navi Yönlendirme</title>
+</head>
+<body>
+    <h1>Yandex Navi'ye Yönlendiriliyor...</h1>
+    <script>
+        // URL'den "address" parametresini al
+        const params = new URLSearchParams(window.location.search);
+        const address = params.get("address");
+
+        if (address) {
+            // Adresi Yandex Navi formatına uygun hale getir
+            const encodedAddress = encodeURIComponent(address);
+            const yandexUrl = `yandexnavi://map_search?text=${encodedAddress}`;
+
+            // Yandex Navi'yi aç
+            window.location.href = yandexUrl;
+        } else {
+            document.body.innerHTML = "<p>Adres bilgisi bulunamadı. Lütfen doğru bir bağlantı kullanın.</p>";
+        }
+    </script>
+</body>
+</html>
