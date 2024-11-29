@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telefon Arama Yönlendirmesi</title>
+</head>
+<body>
+    <h1>Telefon Araması Yönlendiriliyor...</h1>
+    <script>
+        // URL'den "phone" parametresini al
+        const params = new URLSearchParams(window.location.search);
+        const phone = params.get("phone");
+
+        if (phone) {
+            // Telefon numarasını "tel:" formatına uygun hale getir
+            const encodedPhone = encodeURIComponent(phone);
+            const phoneUrl = `tel:${encodedPhone}`;
+
+            // Telefon uygulamasını aç
+            window.location.href = phoneUrl;
+        } else {
+            document.body.innerHTML = "<p>Telefon numarası bulunamadı. Lütfen doğru bir bağlantı kullanın.</p>";
+        }
+    </script>
+</body>
+</html>
